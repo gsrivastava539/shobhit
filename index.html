@@ -76,7 +76,7 @@
                 <h5 class="mb-3">A Graphics Designer / Developer located in our lovely Earth, hail from the city of respect Lucknow & happiness</h5>
                 <p class="mt-20">I develop creative advertising content for various media, including catalogs, menu, business cards, website logos, t-shirt logos while ensuring maximum brand awareness of target audience/market.</p>
                 <!-- <button class="btn btn-outline-danger" onClick="DownloadFile('ResumeShobhit.pdf')"><i class="icon-down-circled2 "></i>Download My CV</button> -->
-				<input class="btn btn-outline-danger" type="button" value="Download My CV" onclick="DownloadFile('ResumeShobhit.pdf')" />
+				<input  type="button" value="Download My CV" onclick="DownloadFile('ResumeShobhit.pdf')" />
             </div>
             <div class="col-lg-4 about-card">
                 <h3 class="font-weight-light">Personal Info</h3>
@@ -787,14 +787,18 @@
 
     <!-- JohnDoe js -->
     <script src="assets/js/johndoe.js"></script>
-	<script type="text/javascript>
-	function DownloadFile(fileName){
-		var url = "assets/files/" + fileName;
-		var req = new XMLHttpRequest();
-		req.open("GET", url, true);
+	
+	<script type="text/javascript">
+        function DownloadFile(fileName) {
+            //Set the File URL.
+            var url = "/assets/files/" + fileName;
+ 
+            //Create XMLHTTP Request.
+            var req = new XMLHttpRequest();
+            req.open("GET", url, true);
             req.responseType = "blob";
-            req.onload = function (){
-			//Convert the Byte Data to BLOB object.
+            req.onload = function () {
+                //Convert the Byte Data to BLOB object.
                 var blob = new Blob([req.response], { type: "application/octetstream" });
  
                 //Check the Browser type and download the File.
@@ -811,12 +815,10 @@
                     a.click();
                     document.body.removeChild(a);
                 }
-			
-			
-			};
-			req.send();
-	};
-	</script>
+            };
+            req.send();
+        };
+    </script>
 
 </body>
 </html>
