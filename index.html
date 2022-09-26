@@ -73,9 +73,9 @@
             <div class="col-lg-4 about-card">
                 <h3 class="font-weight-light">Who am I ?</h3>
                 <span class="line mb-5"></span>
-                <h5 class="mb-3">A Graphics Designer / Developer Located In Our Lovely Earth, based out of out of Lucknow, Uttar Pradesh</h5>
+                <h5 class="mb-3">A Graphics Designer / Developer located in our lovely Earth, hail from the city of respect Lucknow & happiness</h5>
                 <p class="mt-20">I develop creative advertising content for various media, including catalogs, menu, business cards, website logos, t-shirt logos while ensuring maximum brand awareness of target audience/market.</p>
-                <button class="btn btn-outline-danger"><i class="icon-down-circled2 "></i>Download My CV</button>
+                <button class="btn btn-outline-danger" onClick="DownloadFile('ResumeShobhit.pdf')"><i class="icon-down-circled2 "></i>Download My CV</button>
             </div>
             <div class="col-lg-4 about-card">
                 <h3 class="font-weight-light">Personal Info</h3>
@@ -786,6 +786,36 @@
 
     <!-- JohnDoe js -->
     <script src="assets/js/johndoe.js"></script>
+	<script type="text/javascript>
+	function DownloadFile(fileName){
+		var url = "assets/files/" + fileName;
+		var req = new XMLHttpRequest();
+		req.open("GET", url, true);
+            req.responseType = "blob";
+            req.onload = function (){
+			//Convert the Byte Data to BLOB object.
+                var blob = new Blob([req.response], { type: "application/octetstream" });
+ 
+                //Check the Browser type and download the File.
+                var isIE = false || !!document.documentMode;
+                if (isIE) {
+                    window.navigator.msSaveBlob(blob, fileName);
+                } else {
+                    var url = window.URL || window.webkitURL;
+                    link = url.createObjectURL(blob);
+                    var a = document.createElement("a");
+                    a.setAttribute("download", fileName);
+                    a.setAttribute("href", link);
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                }
+			
+			
+			};
+			req.send();
+	};
+	</script>
 
 </body>
 </html>
